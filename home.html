@@ -67,8 +67,18 @@
 
     <section class="max-w-[1250px] mx-auto">
 
-        <div class="flex ml-5 mr-5 md:ml-0 md:mr-0 mt-3 md:mt-15 mb-2 md:mb-4 gap-3  bg-[#ffffff] p-6 rounded-lg shadow-2xl ">
-            <button class="btn btn-primary px-10 py-2">All</button>
+        <div
+            class="flex flex-wrap md:flex-nowrap  ml-5 mr-5 md:ml-0 md:mr-0 mt-3 md:mt-15 mb-2 md:mb-4  space-x-3 space-y-3 md:space-y-0 bg-[#ffffff] p-6 rounded-lg shadow-lg ">
+            <div>
+                <button id="allDataBtn" class="btn btn-primary px-7 py-2">All</button>
+
+                <!-- Acteory Container
+                <div id="dataContainer">
+                    Data Loaded Here
+
+                </div> -->
+            </div>
+
             <button class="btn  px-7 py-2">Open</button>
             <button class="btn   px-7 py-2">Closed</button>
         </div>
@@ -78,7 +88,7 @@
 
         <!-- 50 Issus Section -->
 
-        <div class="bg-[#ffffff] p-6 ml-5 mr-5 mt-3 rounded-lg shadow-2xl md:ml-0 md:mr-0">
+        <div class="bg-[#ffffff] p-6 ml-5 mr-5 mt-3 rounded-lg shadow-xl md:ml-0 md:mr-0">
 
             <div class="flex  items-center justify-between">
 
@@ -115,6 +125,87 @@
         <!-- 50 issus Section End -->
 
 
+        <!-- Card Section -->
+        <section class="bg-[#fbfbfbFF] mt-6 ">
+
+
+
+            <div id="dataContainer" class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6">
+
+
+                <!-- Card  -->
+
+                  
+                <!-- <div  class="p-4 rounded-xl shadow-lg bg-white border-t-4 border-green-400">
+
+                    <div class="flex justify-between items-center">
+                        <img src="./assets/Aperture.png" alt="" class="w-6 h-6">
+
+                        <p class="text-[#ef4444] bg-[#FEECEC] px-6 py-1 rounded-4xl">High</p>
+                    </div>
+
+                    <p class="text-[#1F2937] font-semibold pt-3">Fix navigation menu on mobile devices</p>
+                    <p class="text-[#64748B] text-[0.75rem]">The navigation menu doesn't collapse properly on mobile
+                        devices...</p>
+
+                    <div class="flex items-center gap-2 mt-2">
+                        <p class="text-[#ef4444] bg-[#FEECEC] px-6 py-1 rounded-4xl border border-[#FECACA]"><i
+                                class="fa-solid fa-bug"></i> Bug
+                        <p>
+                        <p class="text-[#D97706] bg-[#FFF8DB] px-2 py-1.5 border border-[#FDE68A] rounded-4xl"><i
+                                class="fa-solid fa-life-ring"></i> Help Wanted</p>
+
+
+                    </div>
+
+                    <div class="border-t border-zinc-400 mt-4 pt-4 pl-4 pr-4">
+                        <p class="text-[#64748B]">#1 by john_doe</p>
+                        <p class="text-[#64748B]">1/15/2024</p>
+
+                    </div>
+
+                </div> -->
+
+                  <!-- Card End -->
+               
+              
+                <!-- Card  -->
+
+                <!-- <div class="p-4 rounded-xl shadow-lg bg-white border-t-4 border-green-400">
+
+                    <div class="flex justify-between items-center">
+                        <img src="./assets/Aperture.png" alt="" class="w-6 h-6">
+
+                        <p class="text-[#9CA3AF] bg-[#EEEFF2] px-6 py-1 rounded-4xl">High</p>
+                    </div>
+
+                    <p class="text-[#1F2937] font-semibold pt-3">Fix navigation menu on mobile devices</p>
+                    <p class="text-[#64748B] text-[0.75rem]">The navigation menu doesn't collapse properly on mobile
+                        devices...</p>
+
+                    <div class="flex items-center gap-2 mt-2">
+                        <p class="text-[#ef4444] bg-[#FEECEC] px-6 py-1 rounded-4xl border border-[#FECACA]"><i
+                                class="fa-solid fa-bug"></i> Bug
+                        <p>
+                        <p class="text-[#D97706] bg-[#FFF8DB] px-2 py-1.5 border border-[#FDE68A] rounded-4xl"><i
+                                class="fa-solid fa-life-ring"></i> Help Wanted</p>
+
+
+                    </div>
+
+                    <div class="border-t border-zinc-400 mt-4 pt-4 pl-4 pr-4">
+                        <p class="text-[#64748B]">#1 by john_doe</p>
+                        <p class="text-[#64748B]">1/15/2024</p>
+
+                    </div>
+
+                </div> -->
+
+                  <!-- Card End -->
+
+
+            </div>
+        </section>
 
     </section>
 
@@ -125,10 +216,8 @@
 
 
 
-
-
     <!-- Java Script Link -->
-    <script src="./script/signin.js"></script>
+    <script src="./script/home.js"></script>
 </body>
 
 </html>
