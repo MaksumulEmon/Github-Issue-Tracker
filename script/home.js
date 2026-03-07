@@ -19,7 +19,6 @@ async function loadData() {
     showLoading();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const info = await res.json();
- 
     hiddenLoading();
     // console.log(data);
     displayData(info.data)
@@ -60,7 +59,7 @@ function displayData(datas) {
                     <p class="text-[#1F2937] font-semibold pt-3 line-clamp-1">${data.title}</p>
                     <p class="text-[#64748B] text-[0.75rem] line-clamp-2">${data.description}</p>
 
-                    <div class="flex items-center gap-2 mt-2">
+                    <div class="block items-center space-y-3 mt-2">
                         <p class="text-[#ef4444] bg-[#FEECEC]  flex items-center gap-1 px-6 py-1 rounded-4xl border border-[#FECACA]"><i
                                 class="fa-solid fa-bug"></i> ${data.labels[0]}
                         <p>
