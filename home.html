@@ -1,11 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Github-Issue-Tracker</title>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <!-- Daisy Ui & Taiwind css -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awosome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Css -->
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
+
 </head>
+
 <body>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime veritatis laboriosam blanditiis eligendi aut saepe fuga soluta, corrupti adipisci expedita dignissimos voluptatibus, neque maiores doloribus ratione ullam sapiente nobis! Reprehenderit.</p>
+
+    <header>
+        <nav
+            class="flex justify-between pl-2 pr-2 pt-4 pb-4 md:pl-20 md:pr-20  stroke-[#E9E9E9] bg-[#F8FAFC] border border-[#e9e9e9]">
+            <div class="flex items-center gap-1 text-[#1F2937] text-2xl font-bold">
+                <img src="./assets/github-logo.png" alt="" class="w-9 h-9">
+                <p class="hidden md:block">GitHub Issues Tracker</p>
+            </div>
+
+            <div class="flex gap-3 pl-2 ">
+                <label id="search" class="input ">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24 ">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" required placeholder="Search" />
+                </label>
+
+                <button id="search-button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+
+    <!-- Main Section -->
+
+    <section class="max-w-[1250px] mx-auto">
+
+        <div class="flex ml-5 mr-5 md:ml-0 md:mr-0 mt-3 md:mt-15 mb-2 md:mb-4 gap-3  bg-[#ffffff] p-6 rounded-lg shadow-2xl ">
+            <button class="btn btn-primary px-10 py-2">All</button>
+            <button class="btn  px-7 py-2">Open</button>
+            <button class="btn   px-7 py-2">Closed</button>
+        </div>
+
+
+
+
+        <!-- 50 Issus Section -->
+
+        <div class="bg-[#ffffff] p-6 ml-5 mr-5 mt-3 rounded-lg shadow-2xl md:ml-0 md:mr-0">
+
+            <div class="flex  items-center justify-between">
+
+                <div class="first-div flex gap-4 items-center">
+
+
+                    <div class="p-2 bg-[#ECE4FF] rounded-full">
+                        <img src="./assets/Aperture.png" alt="" class="w-7 h-7 rounded-full object-cover ">
+                    </div>
+
+                    <div>
+                        <p class="text-xl font-bold">50 Issues</p>
+                        <p class="text-[#64748B] w-auto"> Track and manage your project issues</p>
+                    </div>
+
+                </div>
+
+
+                <div class="hidden  md:flex gap-3 ">
+
+                    <div class="flex gap-1">
+                        <img src="./assets/Open-Status.png" alt="">
+                        <p>Open</p>
+                    </div>
+                    <div class="flex gap-1">
+                        <img src="./assets/Closed- Status .png" alt="">
+                        <p>Closed</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 50 issus Section End -->
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <!-- Java Script Link -->
+    <script src="./script/signin.js"></script>
 </body>
+
 </html>
