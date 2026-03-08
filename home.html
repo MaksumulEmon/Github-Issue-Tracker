@@ -70,17 +70,13 @@
         <div
             class="flex flex-wrap md:flex-nowrap  ml-5 mr-5 md:ml-0 md:mr-0 mt-3 md:mt-15 mb-2 md:mb-4  space-x-3 space-y-3 md:space-y-0 bg-[#ffffff] p-6 rounded-lg shadow-lg ">
             <div>
-                <button id="allDataBtn" class="btn btn-primary px-7 py-2">All</button>
+                <button onclick="btnEvent('all')" id="allBtn" class="btn btn-primary px-7 py-2">All</button>
 
-                <!-- Acteory Container
-                <div id="dataContainer">
-                    Data Loaded Here
-
-                </div> -->
             </div>
 
-            <button class="btn  px-7 py-2">Open</button>
-            <button class="btn   px-7 py-2">Closed</button>
+
+            <button onclick="btnEvent('open')" id="openBtn" class="btn btn-outline px-7 py-2">Open</button>
+            <button onclick="btnEvent('closed')" id="closedBtn" class="btn  btn-outline px-7 py-2">Closed</button>
         </div>
 
 
@@ -100,7 +96,7 @@
                     </div>
 
                     <div>
-                        <p class="text-xl font-bold">50 Issues</p>
+                        <p id="issueCount" class="text-xl font-bold">50 Issues</p>
                         <p class="text-[#64748B] w-auto"> Track and manage your project issues</p>
                     </div>
 
@@ -114,7 +110,7 @@
                         <p>Open</p>
                     </div>
                     <div class="flex gap-1">
-                        <img src="./assets/Closed- Status .png" alt="">
+                        <img src="./assets/Closed-Status.png" alt="">
                         <p>Closed</p>
                     </div>
                 </div>
@@ -211,19 +207,46 @@
                 <span class="loading loading-spinner loading-xl"></span>
             </div>
 
+
+
+
+
+
+
+
+
+            <!-- Product Modal -->
+
+            <!-- Modal -->
+            <div>
+                <dialog id="my_modal_3" class="modal">
+                    <div class="modal-box">
+                        <form method="dialog">
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                                ✕
+                            </button>
+                        </form>
+                        <!-- Modal parent -->
+                        <div id="modalContainer" class="space-y-6"></div>
+                        <form method="dialog" class="flex justify-end">
+                            <button class="btn btn-primary text-white">Close</button>
+                        </form>
+                    </div>
+                </dialog>
+            </div>
+
+
+
+
+
         </section>
 
-    </section>
 
 
 
 
-
-
-
-
-    <!-- Java Script Link -->
-    <script src="./script/home.js"></script>
+        <!-- Java Script Link -->
+        <script src="./script/home.js"></script>
 </body>
 
 </html>
