@@ -9,12 +9,14 @@ const allCardContainer = document.getElementById("allCardContainer");
 let allIssues = [];
 
 
-
+// Function Loading
 function showLoading() {
     loadingSpiner.classList.remove("hidden");
     dataContainer.innerHTML = "";
 }
 
+
+// Function hidden
 function hiddenLoading() {
     loadingSpiner.classList.add("hidden");
 }
@@ -46,7 +48,7 @@ function selectedButton(active) {
 
 
 
-
+// Load All Data
 async function loadData() {
     showLoading();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
@@ -64,19 +66,20 @@ function btnEvent(active) {
     showLoading();
     let filteredData = [];
 
-    if (active === "all") {
+    if (active == "all") {
         filteredData = allIssues;
     }
 
     else if (active == "open") {
         filteredData = allIssues.filter(item => item.status == "open");
+        hiddenLoading();
     }
 
     else if (active == "closed") {
         filteredData = allIssues.filter(item => item.status == "closed");
+        hiddenLoading();
     }
 
-    // hiddenLoading();
 
     displayData(filteredData);
     selectedButton(active);
@@ -84,7 +87,7 @@ function btnEvent(active) {
 
 
 
-
+// IssueCount
 function issueCount(count) {
     const isCount = document.getElementById("issueCount");
     isCount.innerText = count.length + " Issues";
@@ -93,53 +96,47 @@ function issueCount(count) {
 
 
 
-// async function openModal(dataId){
-//     console.log(dataId);
-//     const res =await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${dataId}`)
-//     const data =await res.json();
-//     const issuesDetalis = data.data
-//     console.log(issuesDetalis,'data');
-//     issuesdetalismodal.showModal();
-// }
-
-
-// Open Modal Functionality
+// Modal Api
 function openModal(id) {
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
         .then(res => res.json())
         .then(detail => displayModal(detail.data));
 }
 
+
+// Show Modalon Display
 function displayModal(card) {
+
+    const labels = card.labels.map(label => `
+    <div class="badge bg-[#FEECEC] text-[red] border-[#FECACA] text-[12px] font-medium rounded"> ${label}
+    </div>
+    `).join("");
+
     modalContainer.innerHTML = `
         <div class="p-4">
             <h3 class="font-semibold text-lg">${card.title}</h3>
             <div class="flex items-center gap-2 my-2">
-                <div class="badge ${card.status == "open" ? 'bg-[#00A96E]' : 'bg-[#EF4444]'} text-white text-[12px] font-medium rounded-full">
+      <div class="badge ${card.status == "open" ? 'bg-[#00A96E]' : 'bg-[#EF4444]'} text-white text-[12px] font-medium rounded-full">
                     ${card.status}
-                </div>
-                <div class="text-[#64748B] text-[12px] flex flex-col md:flex-row gap-1">
+               </div>
+         <div class="text-[#64748B] text-[12px] flex flex-col md:flex-row gap-1">
                     <div>• Opened by ${card.assignee}</div>
-                    <div>• ${card.createdAt}</div>
+             <div>• ${card.createdAt}</div>
                 </div>
             </div>
-            <div class="flex gap-1 mb-2">
-                <div class="badge bg-[#FEECEC] text-[#EF4444] border-[#FECACA] text-[12px] font-medium rounded-full">
-                    <i class="fa-solid fa-bug"></i> Bugs
-                </div>
-                <div class="badge bg-[#FFF8DB] text-[#D97706] border-[#FDE68A] text-[12px] font-medium rounded-full">
-                    <i class="fa-solid fa-life-ring"></i> Help Wanted
+            <div class="flex gap-1 mb-4 mt-4">
+               
+                <div class="badge flex gap-2">         ${labels}
                 </div>
             </div>
             <div class="text-[#64748B] mb-2">${card.description}</div>
-            <div class="p-4 grid grid-cols-2 gap-2.5">
-                <div>
-                    <p class="text-[#64748B]">Assignee:</p>
+            <div class="p-4 grid grid-cols-2 gap-2.5 bg-gray-200 rounded">
+                <div>          <p class="text-[#64748B]">Assignee:</p>
                     <h5 class="font-bold">${card.assignee}</h5>
                 </div>
                 <div>
                     <p class="text-[#64748B]">Priority:</p>
-                    <div class="badge ${card.priority === 'high' ? 'bg-[#EF4444]' : card.priority === 'medium' ? 'bg-[#D97706]' : 'bg-[#00A96E]'} text-white text-[12px] font-medium rounded-full">
+                 <div class="badge ${card.priority == 'high' ? 'bg-[#EF4444]' : card.priority == 'medium' ? 'bg-[#D97706]' : 'bg-[#00A96E]'} text-white text-[12px] font-medium rounded-full">
                         ${card.priority}
                     </div>
                 </div>
@@ -150,46 +147,45 @@ function displayModal(card) {
 }
 
 
+
 function displayData(datas) {
     dataContainer.innerHTML = "";
 
     datas.forEach(data => {
-        // Create card
+        // Created card
         const card = document.createElement("div");
-        card.className = `p-4 rounded-xl shadow-lg bg-white border-t-4 cursor-pointer ${data.status === "open" ? 'border-t-[#00A96E]' : 'border-t-[#A855F7]'}`;
+        card.className = `p-4 rounded-xl shadow-lg bg-white border-t-4 cursor-pointer ${data.status == "open" ? 'border-t-[#00A96E]' : 'border-t-[#A855F7]'}`;
 
-        // Make the whole card clickable
+
         card.addEventListener("click", () => {
-            openModal(data.id); // Call existing openModal function
+            openModal(data.id);
         });
 
-        // Card content
+        // Card Item
         card.innerHTML = `
             <div class="flex justify-between items-center">
-                <img src="${data.status == "open" ? './assets/Open-Status.png' : './assets/Closed-Status.png'}" alt="" class="w-6 h-6" />
+                <img src="${data.status == "open" ? './assets/Open-Status.png' : './assets Closed-Status.png'}" alt="" class="w-6 h-6" />
                 <p class="${data.priority == "high"
                 ? "text-[#EF4444] bg-[#FEECEC] px-6 py-1 rounded-4xl"
-                : data.priority == "low"
+         : data.priority == "low"
                     ? "text-[#9CA3AF] bg-[#EEEFF2] px-6 py-1 rounded-4xl"
                     : "text-[#F59E0B] bg-[#FFF6D1] px-6 py-1 rounded-4xl"
             }">
                 ${data.priority}
                 </p>
             </div>
-
             <p class="text-[#1F2937] font-semibold pt-3 line-clamp-1">${data.title}</p>
             <p class="text-[#64748B] text-[0.75rem] line-clamp-2">${data.description}</p>
-
-            <div class="block items-center space-y-3 mt-2">
-                <p class="text-[#ef4444] bg-[#FEECEC] flex items-center gap-1 px-6 py-1 rounded-4xl border border-[#FECACA]">
+      <div class="block items-center space-y-3 mt-2">
+            <p class="text-[#ef4444] bg-[#FEECEC] flex items-center gap-1 px-6 py-1 rounded-4xl border border-[#FECACA]">
                     <i class="fa-solid fa-bug"></i> ${data.labels[0]}
-                </p>
-                <p class="text-[#D97706] bg-[#FFF8DB] px-2 py-1.5 border border-[#FDE68A] rounded-4xl ${data.labels[1] ? "" : "hidden"}">
-                    <i class="fa-solid fa-life-ring"></i> ${data.labels[1] ? data.labels[1] : ""}
-                </p>
+      </p>
+                <p class="text-[#D97706] bg-[#FFF8DB] px-2 py-1.5 border border-[#FDE68A rounded-4xl ${data.labels[1] ? "" : "hidden"}">
+         <i class="fa-solid fa-life-ring"></i> ${data.labels[1] ? data.labels[1] : ""}
+        </p>
             </div>
 
-            <div class="border-t border-zinc-400 mt-4 pt-4 pl-4 pr-4">
+  <div class="border-t border-zinc-400 mt-4 pt-4 pl-4 pr-4">
                 <p class="text-[#64748B]">${data.author}</p>
                 <p class="text-[#64748B]">${data.createdAt}</p>
             </div>
@@ -200,6 +196,26 @@ function displayData(datas) {
 
     // Update issue count
     issueCount(datas);
+
+
+
 }
 
 loadData();
+
+
+
+    // Secrch 
+    document.getElementById("search-button").addEventListener("click", ()=>{
+        const  input = document.getElementById("input-serach");
+        const searchValue = input.value.trim().toLowerCase();
+        console.log(searchValue);
+
+        showLoading();
+        fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+        .then(res => res.json())
+        .then(data =>{
+            hiddenLoading();
+            displayData(data.data);
+        });
+    })
