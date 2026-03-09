@@ -70,16 +70,16 @@ function btnEvent(active) {
         filteredData = allIssues;
     }
 
-    else if (active == "open") {
+    else if (active === "open") {
         filteredData = allIssues.filter(item => item.status == "open");
-        hiddenLoading();
+        // hiddenLoading();
     }
 
-    else if (active == "closed") {
+    else if (active === "closed") {
         filteredData = allIssues.filter(item => item.status == "closed");
-        hiddenLoading();
+      
     }
-
+      hiddenLoading();
 
     displayData(filteredData);
     selectedButton(active);
@@ -164,7 +164,7 @@ function displayData(datas) {
         // Card Item
         card.innerHTML = `
             <div class="flex justify-between items-center">
-                <img src="${data.status == "open" ? './assets/Open-Status.png' : './assets Closed-Status.png'}" alt="" class="w-6 h-6" />
+                <img src="${data.status == "open" ? './assets/Open-Status.png' : './assets/Closed-Status.png'}" alt="" class="w-6 h-6" />
                 <p class="${data.priority == "high"
                 ? "text-[#EF4444] bg-[#FEECEC] px-6 py-1 rounded-4xl"
          : data.priority == "low"
@@ -180,7 +180,7 @@ function displayData(datas) {
             <p class="text-[#ef4444] bg-[#FEECEC] flex items-center gap-1 px-6 py-1 rounded-4xl border border-[#FECACA]">
                     <i class="fa-solid fa-bug"></i> ${data.labels[0]}
       </p>
-                <p class="text-[#D97706] bg-[#FFF8DB] px-2 py-1.5 border border-[#FDE68A rounded-4xl ${data.labels[1] ? "" : "hidden"}">
+                <p class="text-[#D97706] bg-[#FFF8DB] px-2 py-1.5 border border-[#FDE68A] rounded-4xl ${data.labels[1] ? "" : "hidden"}">
          <i class="fa-solid fa-life-ring"></i> ${data.labels[1] ? data.labels[1] : ""}
         </p>
             </div>
